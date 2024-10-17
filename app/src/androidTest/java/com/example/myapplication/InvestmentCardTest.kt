@@ -25,6 +25,10 @@ class InvestmentCardTest {
 
         // Assert
         composeTestRule.onNodeWithText("MXRF11").assertIsDisplayed()
+        // Validação de outros textos (Adicionei mais essas validações)
+        composeTestRule.onNodeWithText("Rendimento: R$ 0,09").assertIsDisplayed()
+        composeTestRule.onNodeWithText("R$ 11,52").assertIsDisplayed()
+        composeTestRule.onNodeWithText("DAQUI A 2 DIAS").assertIsDisplayed()
     }
 
     @Test
@@ -39,9 +43,8 @@ class InvestmentCardTest {
             )
         }
 
-        // Executa clique no botão "Mais detalhes"
-        composeTestRule.onNodeWithText("MXRF11").performClick()
-
+        // Executa clique no botão "Mais detalhes" (Corrigi o nome do elemento que precisava clicar)
+        composeTestRule.onNodeWithText("mais detalhes", ignoreCase = true).performClick()
         // Verifica se o título do alerta é exibido
         composeTestRule.onNodeWithText("Detalhes do investimento").assertIsDisplayed()
     }
